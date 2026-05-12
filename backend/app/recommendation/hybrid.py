@@ -27,8 +27,8 @@ from app.recommendation.cold_start import is_cold_start, get_cold_start_recommen
 
 logger = logging.getLogger(__name__)
 
-W_CF = 0.4
-W_CB = 0.4
+W_CF = 0.45
+W_CB = 0.35
 W_POP = 0.12
 W_CLICK = 0.08
 

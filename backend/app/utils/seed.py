@@ -45,6 +45,7 @@ GENRE_PROFILES = {
     "documentary_fan": {"Documentary": 0.9, "History": 0.7, "Drama": 0.6},
     "thriller_fan":   {"Thriller": 0.9, "Mystery": 0.8, "Crime": 0.7, "Action": 0.5},
 }
+
 PROFILE_NAMES = list(GENRE_PROFILES.keys())
 
 
@@ -148,12 +149,11 @@ def generate_synthetic_users(db, movie_count: int) -> None:
     
     Гиперпараметры:
         POPULARITY_THRESHOLD = 6.07   - порог популярности (50% фильмов в CSV имеют popularity > 6.07)
-        POPULARITY_RATIO = 0.667      - 2/3 фильмов с popularity > 6.07 для более реалистичного распределения
-        1/3 фильмов - рандом из жанра
+        POPULARITY_RATIO = 0.5      - 1/2 фильмов с popularity > 6.07 для более реалистичного распределения
     """
     # === ГИПЕРПАРАМЕТРЫ ===
-    POPULARITY_THRESHOLD = 6.07    # 2/3 фильмов должны иметь популярность выше этого
-    POPULARITY_RATIO = 2.0 / 3.0   # ~66.7% популярных фильмов
+    POPULARITY_THRESHOLD = 6.07    # 1/2 фильмов должны иметь популярность выше этого
+    POPULARITY_RATIO = 0.5   # больше половины
     
     existing_synthetic_users = db.query(User).filter(User.username.like("synth_%")).all()
     if existing_synthetic_users:
