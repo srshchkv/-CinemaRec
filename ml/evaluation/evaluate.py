@@ -92,7 +92,6 @@ def evaluate():
     if movie_ids:
         ratings = ratings[ratings["movie_id"].isin(set(movie_ids))]
 
-    # Global popularity proxy from observed interactions.
     item_counts = ratings["movie_id"].value_counts()
     max_count = int(item_counts.max()) if len(item_counts) else 1
 
@@ -190,7 +189,7 @@ def evaluate():
                 scores[mid] = -1.0
                 continue
 
-            scores[mid] = 0.4 * cf_score + 0.4 * cb_score + 0.12 * pop_score - 0.60 * max(0.0, neg_score)
+            scores[mid] = 0.45 * cf_score + 0.35 * cb_score + 0.12 * pop_score - 0.60 * max(0.0, neg_score)
 
         recommended = sorted(scores, key=scores.get, reverse=True)
         users_data.append({"recommended": recommended, "relevant": relevant})

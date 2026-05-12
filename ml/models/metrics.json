@@ -1,6 +1,6 @@
 {
-  "precision_at_20": 0.041,
-  "recall_at_20": 0.2733,
-  "ndcg_at_20": 0.1401,
-  "rmse": 0.5131
+  "precision_at_20": 0.044,
+  "recall_at_20": 0.2933,
+  "ndcg_at_20": 0.1762,
+  "rmse": 0.5617
 }

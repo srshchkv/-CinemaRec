@@ -12,8 +12,8 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 MODELS_DIR = Path(__file__).parent.parent / "models"
 
-W_CF = 0.55
-W_CB = 0.25
+W_CF = 0.45
+W_CB = 0.35
 W_POP = 0.12
 W_CLICK = 0.08
 
