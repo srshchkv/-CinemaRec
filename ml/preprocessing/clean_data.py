@@ -5,7 +5,7 @@ import pandas as pd
 def build_text_field(df: pd.DataFrame) -> pd.Series:
     """
     Combined text for TF-IDF / sentence-transformers:
-        title + genres + keywords + overview + language + year
+        title + genres + keywords + overview + language + year + production_countries
     """
     def row_to_text(row) -> str:
         parts = []
@@ -21,6 +21,8 @@ def build_text_field(df: pd.DataFrame) -> pd.Series:
             parts.append(str(row["original_language"]))
         if pd.notna(row.get("year")):
             parts.append(str(int(row["year"])))
+        if pd.notna(row.get("production_countries")):
+            parts.append(str(row["production_countries"]).replace(",", " "))
         return " ".join(parts)
 
     return df.apply(row_to_text, axis=1)

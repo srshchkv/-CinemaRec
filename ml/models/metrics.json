@@ -1,6 +1,24 @@
 {
-  "precision_at_20": 0.044,
-  "recall_at_20": 0.2933,
-  "ndcg_at_20": 0.1762,
-  "rmse": 0.5617
+  "cf_svd": {
+    "precision_at_20": 0.15,
+    "recall_at_20": 0.3134,
+    "ndcg_at_20": 0.15,
+    "rmse": 0.5617
+  },
+  "cb_tfidf": {
+    "precision_at_20": 0.034,
+    "recall_at_20": 0.2267,
+    "ndcg_at_20": 0.1303
+  },
+  "hybrid_best": {
+    "precision_at_20": 0.0515,
+    "recall_at_20": 0.3433,
+    "ndcg_at_20": 0.1966,
+    "rmse": 0.5617,
+    "best_weights": {
+      "w_cf": 0.3,
+      "w_cb": 0.5,
+      "w_pop": 0.12
+    }
+  }
 }

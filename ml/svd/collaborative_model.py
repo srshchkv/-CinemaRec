@@ -70,7 +70,6 @@ def generate_synthetic_ratings(movies_df: pd.DataFrame, n_users: int = 100, rati
     """
     print(f"[svd] Generating synthetic ratings for {n_users} users from {len(movies_df)} movies…")
 
-    # Work with top movies by popularity for speed
     df = movies_df.copy()
     df = df[df["vote_count"] >= 20].dropna(subset=["id"])
     df["id"] = df["id"].astype(int)
@@ -124,7 +123,6 @@ def train_svd(ratings_df: pd.DataFrame, n_factors: int = 100, n_epochs: int = 20
     reader = Reader(rating_scale=(0.5, 5.0))
     data = Dataset.load_from_df(ratings_df[["user_id", "movie_id", "rating"]], reader)
 
-    # Use smaller test split if dataset is small
     test_size = min(0.15, max(0.05, 50 / len(ratings_df)))
     trainset, testset = surprise_split(data, test_size=test_size, random_state=42)
 
